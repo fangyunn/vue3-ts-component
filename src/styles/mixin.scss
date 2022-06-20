@@ -1,0 +1,21 @@
+// namespace 属性嵌套,将属性嵌套在命名空间中
+$namespace :'el';
+$state-prefix: 'is-';
+// mixin用于定义可重复使用的样式 @include 使用mixin定义的样式
+@mixin b($block) {
+  $B: $namespace+'-' + $block !global;
+  .#{$B}{
+    @content;
+  }
+}
+
+@mixin when($state) {
+  // @at-root 从跟出发 不嵌套在父子下面
+  @at-root {
+    &.#{$state-prefix + $state}{
+      @content;
+    }
+  }
+}
+
+
