@@ -13,7 +13,9 @@
         header
       </el-header>
       <el-main :height="'500px'">
-        main
+        <el-button :type="'primary'" :size="'small'">测试按钮</el-button>
+        <el-button :type="'success'" :size="'medium'">测试按钮</el-button>
+        <el-button :type="'danger'" :size="'large'">测试按钮</el-button>
       </el-main>
       <el-footer :height="'100px'">
         footer

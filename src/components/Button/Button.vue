@@ -1,0 +1,104 @@
+<template>
+  <button class="el-button" :class="[buttonSize ? `el-button--${buttonSize}` : '',
+  type ? `el-button--${type}` : '']">
+    <slot />
+  </button>
+</template>
+
+<script lang="ts">
+export default {
+  name: 'ElButton'
+}
+</script>
+<script lang="ts" setup>
+import { withDefaults, computed } from 'vue';
+import { useGlobalConfig } from '../../utils/index'
+interface Props {
+  // size 只能是small medium large
+  size?: "" | 'small' | 'medium' | 'large',
+  type?: "" | 'primary' | 'success' | 'danger'
+}
+const props = withDefaults(defineProps<Props>(), {
+  size: '',
+  type: ''
+})
+const globalSize = useGlobalConfig()
+const buttonSize = computed(() => {
+  return props.size || globalSize.size
+})
+
+</script> 
+
+<style lang="scss" scoped>
+@import '../../styles/mixin.scss';
+
+@include b(button) {
+  display: inline-block;
+  cursor: pointer;
+  background-color: $--button-default-background-color;
+  color: $--button-default-font-color;
+  text-align: center;
+  border: $--border-base;
+  border-color: $--button-default-border-color;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  font-weight: $--button-font-weight;
+
+  &+& {
+    margin-left: 10px;
+  }
+
+  @include button-size($--button-padding-vertical,
+    $--button-padding-horizontal,
+    $--button-font-size,
+    $--button-border-radius );
+
+  &:hover,
+  &:focus {
+    color: $--color-primary;
+    border-color: mix($--color-white, $--color-primary, 70%);
+    background-color: mix($--color-white, $--color-primary, 90%);
+  }
+
+  @include m(medium) {
+    @include button-size($--button-medium-padding-vertical,
+      $--button-medium-padding-horizontal,
+      $--button-medium-font-size,
+      $--button-medium-border-radius );
+  }
+
+  @include m(small) {
+    @include button-size($--button-small-padding-vertical,
+      $--button-small-padding-horizontal,
+      $--button-small-font-size,
+      $--button-small-border-radius );
+
+  }
+
+  @include m(large) {
+    @include button-size($--button-large-padding-vertical,
+      $--button-large-padding-horizontal,
+      $--button-large-font-size,
+      $--button-large-border-radius );
+  }
+
+  @include m(primary) {
+    @include button-variant($--button-primary-font-color,
+      $--button-primary-background-color,
+      $--button-primary-border-color );
+  }
+
+  @include m(success) {
+    @include button-variant($--button-success-font-color,
+      $--button-success-background-color,
+      $--button-success-border-color );
+  }
+
+  @include m(danger) {
+    @include button-variant($--button-danger-font-color,
+      $--button-danger-background-color,
+      $--button-danger-border-color );
+  }
+}
+</style>

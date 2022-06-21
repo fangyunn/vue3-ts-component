@@ -7,4 +7,6 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest'
   },
   testMatch: ['**/?(*.)+(spec).[jt]s?(x)'],
+  collectCoverage: true,
+  coverageReporters: ["json", "html"]
 }
