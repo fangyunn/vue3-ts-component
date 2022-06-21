@@ -8,7 +8,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    // "isolatedModules": true, 在isolatedModules为true的情况下 .spec.ts视为全局脚本
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true
