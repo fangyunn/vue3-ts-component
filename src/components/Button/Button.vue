@@ -11,12 +11,12 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { withDefaults, computed } from 'vue';
+import { withDefaults, computed } from 'vue'
 import { useGlobalConfig } from '../../utils/index'
 interface Props {
   // size 只能是small medium large
-  size?: "" | 'small' | 'medium' | 'large',
-  type?: "" | 'primary' | 'success' | 'danger'
+  size?: '' | 'small' | 'medium' | 'large',
+  type?: '' | 'primary' | 'success' | 'danger'
 }
 const props = withDefaults(defineProps<Props>(), {
   size: '',

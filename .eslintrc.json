@@ -23,6 +23,16 @@
     // 组件命名
     "vue/multi-word-component-names": 0,
     // 根组件的个数
-    "vue/no-multiple-template-root": 0
+    "vue/no-multiple-template-root": 0,
+    // 单引号
+    "quotes":[2,"single"],
+    // 不要分号
+    "semi":[2,"never"],
+    // 注释 //后面需要空格
+    "spaced-comment":[2,"always"],
+    // 空行不能超过两行
+    "no-multiple-empty-lines":[2,{"max":1}],
+    // 禁止稀疏数组[1,,2]
+    "no-sparse-arrays":2
   }
 }
